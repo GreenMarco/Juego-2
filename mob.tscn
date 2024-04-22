@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://crwvbs0hr8g7p"]
+
+[ext_resource type="Texture2D" uid="uid://c5t1qf8onlcio" path="res://Bat/Idle/SimpleEnemies Bat_Idle_0.png" id="1_ah8nv"]
+[ext_resource type="Script" path="res://mob.gd" id="1_rh4cr"]
+[ext_resource type="Texture2D" uid="uid://b1ets6fmvi4fy" path="res://Bat/Idle/SimpleEnemies Bat_Idle_1.png" id="2_20357"]
+[ext_resource type="Texture2D" uid="uid://bou2c5vswpuqa" path="res://Bat/Idle/SimpleEnemies Bat_Idle_2.png" id="3_poy8h"]
+[ext_resource type="Texture2D" uid="uid://3d4hqilr1q7v" path="res://Bat/Idle/SimpleEnemies Bat_Idle_3.png" id="4_q717p"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2bp5n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ah8nv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_20357")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_poy8h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_q717p")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6pjyo"]
+size = Vector2(38, 21)
+
+[node name="Mob" type="RigidBody2D" groups=["mobs"]]
+position = Vector2(23, 23)
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_rh4cr")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.865, 1.865)
+sprite_frames = SubResource("SpriteFrames_2bp5n")
+animation = &"fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4.5)
+shape = SubResource("RectangleShape2D_6pjyo")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+visibility_layer = 0
